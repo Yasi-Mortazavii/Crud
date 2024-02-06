@@ -1,3 +1,4 @@
+using Crud.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +30,8 @@ namespace Crud
                     Config.UseSqlServer(Configuration["ConnectionStrings:MyDbConnections"]);
                 });
             services.AddControllersWithViews();
+
+            services.AddScoped(typeof(IEventService), typeof(EventService));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
